@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tests</title>
+</head>
+<body>
+    <h1>Student Tests</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Test Name</th>
+              <!--  <th>Course Code</th> -->
+                <th>Marks Obtained</th>
+                <th>Max Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="test : ${tests}">
+                <td th:text="${test.testName}"></td>
+              <!--  <td th:text="${test.subject_code}"></td> -->
+                <td th:text="${test.marksObtained}"></td>
+                <td th:text="${test.maxMarks}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

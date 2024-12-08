@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #007bff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .logout {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main>
+        <!-- List All Teachers -->
+        <h2>All Teachers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Teacher ID</th>
+                    <th>Teacher Name</th>
+                    <th>Email</th>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamically filled rows -->
+                <tr th:each="teacher : ${teachers}">
+                    <td th:text="${teacher.id}"></td>
+                    <td th:text="${teacher.name}"></td>
+                    <td th:text="${teacher.email}"></td>
+                    <td th:text="${teacher.subject_code}"></td>
+                    <td th:text="${teacher.subject_name}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Create a New Teacher -->
+        <h2>Create a New Teacher</h2>
+        <form id="create-teacher-form" action="/teachers" method="post">
+            <label for="teacher-name">Teacher Name</label>
+            <input type="text" id="teacher-name" name="name" placeholder="Enter teacher name" required>
+            <label for="teacher-email">Teacher Email</label>
+            <input type="email" id="teacher-email" name="email" placeholder="Enter teacher email" required>
+            <label for="teacher-password">Password</label>
+            <input type="password" id="teacher-password" name="password" placeholder="Enter password" required>
+            <label for="subject-code">Subject Code</label>
+            <input type="text" id="subject-code" name="subject_code" placeholder="Enter subject code" required>
+            <label for="subject-name">Subject Name</label>
+            <input type="text" id="subject-name" name="subject_name" placeholder="Enter subject name" required>
+            <button type="submit">Create Teacher</button>
+        </form>
+
+        <a href="/logout" class="logout">Logout</a>
+    </main>
+</body>
+</html>

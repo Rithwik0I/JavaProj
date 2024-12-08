@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f7faff, #d6e4f0);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #4a90e2;
+            text-shadow: 1px 1px 2px rgba(74, 144, 226, 0.2);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        a, a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Logout Button */
+        .logout {
+            padding: 10px 25px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            float: right;
+            margin: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout:hover {
+            background: linear-gradient(to right, #f56c6c, #fa8c8c);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        /* Subject List */
+        .subject-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .subject-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 5px solid #4a90e2;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .subject-list li:hover {
+            background: rgba(74, 144, 226, 0.2);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        table th, table td {
+            border: 1px solid rgba(200, 200, 200, 0.5);
+            padding: 15px;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        table th {
+            background: linear-gradient(to right, #4a90e2, #6ab2f7);
+            color: white;
+            font-size: 1.1em;
+        }
+
+        table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        table tr:nth-child(odd) {
+            background: rgba(245, 245, 245, 0.7);
+        }
+
+        table tr:hover {
+            background: rgba(200, 220, 255, 0.5);
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(to right, #4a90e2, #6ab2f7);
+            color: white;
+            font-size: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .logout {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            table th, table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+			.footer {
+			                font-size: 0.8em;
+			            }
+			        }
+			    </style>
+			</head>
+			<body>
+			    <a href="/logout" class="logout">Logout</a>
+			    <h1>Welcome to Your Dashboard</h1>
+
+			    <div class="container">
+			        <div class="subject-list">
+			            <h2>Your Subjects and Teachers</h2>
+			            <ul>
+			                <li th:each="subject : ${subjects}">
+			                    <span>
+			                        <strong th:text="${subject.name}"></strong>
+			                    </span>
+			                    <span>
+			                        <em>Taught by: <span th:text="${subject.teacher}"></span></em>
+			                    </span>
+			                </li>
+			            </ul>
+			        </div>
+
+			        <div class="test-scores">
+						<h1>Student Tests</h1>
+						    <table border="1">
+						        <thead>
+						            <tr>
+						                <th>Test Name</th>
+						                <th>Marks Obtained</th>
+						                <th>Max Marks</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						            <tr th:each="test : ${tests}">
+						                <td th:text="${test.testName}"></td>
+						                <td th:text="${test.marksObtained}"></td>
+						                <td th:text="${test.maxMarks}"></td>
+						            </tr>
+									   
+						        </tbody>
+						    </table>
+			        </div>
+			    </div>
+
+			    <div class="footer">
+			        &copy; 2024 Student Dashboard. All Rights Reserved.
+			    </div>
+			</body>
+			</html>
+			

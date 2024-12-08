@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+        }
+        .buttons-container {
+            margin-top: 50px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 20px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our System</h1>
+    <p>Select your role to log in:</p>
+    <div class="buttons-container">
+        <a href="/student-login" class="button">Student Login</a>
+        <a href="/teacher-login" class="button">Teacher Login</a>
+        <a href="/admin-login" class="button">Admin Login</a>
+    </div>
+</body>
+</html>

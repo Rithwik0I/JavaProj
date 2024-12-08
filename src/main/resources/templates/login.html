@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 40px 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .login-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #e0f2ff;
+      margin-bottom: 20px;
+    }
+    .icon-wrapper svg {
+      color: #6e8efb;
+    }
+    h5 {
+      margin-bottom: 20px;
+      color: #6e8efb;
+    }
+    .input-field {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .input-field input {
+      width: calc(100% - 24px);
+      padding: 10px;
+      border: 1px solid #a777e3;
+      border-radius: 5px;
+    }
+    .input-field:hover input {
+      border-color: #6e8efb;
+    }
+    .login-button {
+      background-color: #6e8efb;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .login-button:hover {
+      background-color: #a777e3;
+    }
+    .signup-link {
+      color: #6e8efb;
+      text-decoration: none;
+    }
+    .signup-link:hover {
+      color: #a777e3;
+      text-decoration: underline;
+    }
+	/* Style for the label */
+	       .dropdown-label {
+	           display: flex;
+	           flex-direction: column;
+	           font-family: Arial, sans-serif;
+	           font-size: 16px;
+	           color: #333;
+	           margin-bottom: 16px;
+	       }
+
+	       /* Style for the select dropdown */
+	       .dropdown-select {
+	           width: 100%;
+	           padding: 10px 12px;
+	           font-size: 14px;
+	           color: #333;
+	           border: 1px solid #ccc;
+	           border-radius: 5px;
+	           background-color: #f9f9f9;
+	           appearance: none; /* Removes native styling for uniform appearance */
+	           cursor: pointer;
+	           transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	       }
+
+	       /* Hover effect for the dropdown */
+	       .dropdown-select:hover {
+	           border-color: #888;
+	       }
+
+	       /* Focus effect for the dropdown */
+	       .dropdown-select:focus {
+	           border-color: #007bff;
+	           box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+	           outline: none;
+	       }
+
+	       /* Optional: Add spacing between the label and select */
+	       .dropdown-label > .dropdown-select {
+	           margin-top: 8px;
+	       }
+  </style>
+</head>
+
+
+<body>
+	<div class="container">
+	   <div class="login-box">
+	     <div class="icon-wrapper">
+	       <!-- Replace with an appropriate icon -->
+	       🎓
+	     </div>
+    <h2>Login</h2>
+    <form th:action="@{/login}" method="post">
+        <div th:if="${error}" style="color: red;" th:text="${error}"></div>
+		<div class="input-field">
+        <label>Email: <input type="email" name="email" required></label></div><br>
+		<div class="input-field">
+        <label>Password: <input type="password" name="password" required></label></div><br>
+		<div class="input-field">
+        <label class="dropdown-label">Role:
+            <select name="role" class="dropdown-select">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+        </label></div><br>
+        <input class="login-button" type="submit" value="Login">
+    </form>
+	   </div>
+	   </div>
+</body>
+</html>
